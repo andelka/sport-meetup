@@ -13,3 +13,6 @@
 /tmp
 
 .byebug_history
+
+config/secrets.yml
+config/database.yml
