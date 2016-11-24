@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110214439) do
+ActiveRecord::Schema.define(version: 20161124193906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "levels", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "match_levels", force: :cascade do |t|
+    t.integer "match_id"
+    t.integer "level_id"
+  end
 
   create_table "matches", force: :cascade do |t|
     t.string   "title"
@@ -28,6 +37,11 @@ ActiveRecord::Schema.define(version: 20161110214439) do
     t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sport_id"
+  end
+
+  create_table "sports", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|

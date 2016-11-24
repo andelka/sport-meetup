@@ -1,3 +1,14 @@
-<% @matches.each do |m| %>
-<p><%= m.title %></p>
-<% end %>
+<button><%= link_to 'New', new_match_path %></button>
+<div>
+  <% @matches.each do |m| %>
+    <p><%= link_to m.title, match_path(m) %></p>
+    <ul>
+      <% m.levels.each do |l| %>
+        <li><%= l.name %></li>
+      <% end %>
+    </ul>
+    <p><%= m.sport.name if m.sport.present? %></p>
+    <button><%= link_to 'Destroy', match_path(m), method: :delete, data: { confirm: "Are you sure?"} %></button>
+    <button><%= link_to 'Edit', edit_match_path(m) %></button>
+  <% end %>
+</div>

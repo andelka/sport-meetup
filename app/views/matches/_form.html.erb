@@ -1,6 +1,7 @@
 <%= form_for @match do |f| %>
   <%= f.label :title %>:
   <%= f.text_field :title %><br />
-
+  <%= f.collection_select(:level_ids, Level.all, "id", "name", {}, {multiple: true}) %>
+  <%= f.collection_select(:sport_id, Sport.all, "id", "name") %>
   <%= f.submit %>
 <% end %>
